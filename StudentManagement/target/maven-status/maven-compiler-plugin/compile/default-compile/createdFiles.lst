@@ -1,0 +1,10 @@
+com\StudentManagement\javaservlet\AdminLoginServlet.class
+com\StudentManagement\javaservlet\LogoutServlet.class
+com\StudentManagement\javaservlet\AdminDashboardServlet.class
+com\StudentManagement\javaservlet\UpdateStudentServlet.class
+com\mycompany\studentmanagement\resources\JakartaEE11Resource.class
+com\StudentManagement\javaservlet\DeleteStudentServlet.class
+com\StudentManagement\javaservlet\Student.class
+com\StudentManagement\javaservlet\AddStudentServlet.class
+com\mycompany\studentmanagement\JakartaRestConfiguration.class
+com\StudentManagement\javaservlet\DBUtil.class
