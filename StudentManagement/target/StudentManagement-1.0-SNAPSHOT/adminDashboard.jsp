@@ -26,6 +26,12 @@
 
     <div class="container">
         <h3>Student Data</h3>
+        
+        <%
+            // Get student count
+            Integer studentCount = (Integer) request.getAttribute("studentCount");
+        %>
+        <p><strong>Total Students: <%= (studentCount != null) ? studentCount : 0 %></strong></p>
 
         <table>
             <thead>
@@ -78,6 +84,8 @@
         
         <br>
         <button class="button" onclick="window.location.href='addStudent.html'">Add Student</button>
+        <button class="button" onclick="window.location.href='updateStudent.html'">Direct Update Student</button>
+        <button class="button" onclick="window.location.href='deleteStudent.html'">Direct Delete Student</button>
         <br><br>
         <button class="button" onclick="window.location.href='LogoutServlet'">Logout</button>
     </div>

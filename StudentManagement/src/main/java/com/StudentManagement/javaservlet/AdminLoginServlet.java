@@ -24,7 +24,7 @@ public class AdminLoginServlet extends HttpServlet {
             session.setAttribute("admin", "loggedIn");
 
             // Redirect to the admin dashboard
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("AdminDashboardServlet");
         } else {
             // If credentials don't match, redirect back to the login page
             response.sendRedirect("index.html");

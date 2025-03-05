@@ -45,7 +45,7 @@ public class UpdateStudentServlet extends HttpServlet {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                response.sendRedirect("adminDashboard.jsp");
+                response.sendRedirect("AdminDashboardServlet");
             } else {
                 response.sendRedirect("updateStudent.html?error=notfound");
             }

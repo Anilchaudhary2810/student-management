@@ -17,7 +17,7 @@ public class AdminDashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        
+
         // Check if admin is logged in
         if (session == null || session.getAttribute("admin") == null) {
             response.sendRedirect("index.html");
@@ -25,6 +25,7 @@ public class AdminDashboardServlet extends HttpServlet {
         }
 
         ArrayList<Student> students = new ArrayList<>();
+        int studentCount = 0; // Variable to store student count
 
         try (Connection conn = DBUtil.getConnection()) {
             String query = "SELECT * FROM students"; 
@@ -41,6 +42,15 @@ public class AdminDashboardServlet extends HttpServlet {
                     students.add(new Student(id, name, studentClass, marks, gender));
                 }
             }
+
+            // Count total students
+            String countQuery = "SELECT COUNT(*) AS total FROM students";
+            try (PreparedStatement countStmt = conn.prepareStatement(countQuery);
+                 ResultSet countRs = countStmt.executeQuery()) {
+                if (countRs.next()) {
+                    studentCount = countRs.getInt("total");
+                }
+            }
         } catch (SQLException e) { 
             request.setAttribute("error", "Database error while fetching students.");
         }
@@ -50,9 +60,11 @@ public class AdminDashboardServlet extends HttpServlet {
         for (Student s : students) {
             System.out.println("Student: " + s.getId() + " - " + s.getName());
         }
+        System.out.println("📌 Total Student Count: " + studentCount);
 
-        // Pass student data to JSP
+        // Pass student data and count to JSP
         request.setAttribute("students", students);
+        request.setAttribute("studentCount", studentCount);
         RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
         dispatcher.forward(request, response);
     }

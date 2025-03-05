@@ -51,7 +51,7 @@ public class AddStudentServlet extends HttpServlet {
                 insertStmt.executeUpdate();
             }
 
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("AdminDashboardServlet");
 
         } catch (SQLException e) {
             response.sendRedirect("addStudent.html?error=database");

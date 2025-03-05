@@ -29,7 +29,7 @@ public class DeleteStudentServlet extends HttpServlet {
             
             // If the student is deleted successfully, redirect to the admin dashboard
             if (rowsAffected > 0) {
-                response.sendRedirect("adminDashboard.jsp");
+                response.sendRedirect("AdminDashboardServlet");
             } else {
                 // If no rows are deleted, redirect back to the delete form
                 response.sendRedirect("deleteStudent.html");

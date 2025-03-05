@@ -51,6 +51,9 @@
         }
         .dashboard-btn {
             background-color: #007BFF;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
         .dashboard-btn:hover {
             background-color: #0056b3;
@@ -63,7 +66,6 @@
         <form action="AddStudentServlet" method="POST">
             <input type="text" class="input-field" name="name" placeholder="Name" required>
             
-            <!-- Dropdown for Class -->
             <select class="input-field" name="class" required>
                 <option value="Post Graduate">Post Graduate</option>
                 <option value="Undergraduate">Undergraduate</option>
@@ -73,7 +75,6 @@
 
             <input type="number" class="input-field" name="marks" placeholder="Marks" required>
 
-            <!-- Radio Buttons for Gender -->
             <label>Gender:</label><br>
             <input type="radio" name="gender" value="Male" required> Male
             <input type="radio" name="gender" value="Female" required> Female
@@ -82,8 +83,7 @@
             <button type="submit" class="submit-btn">Add Student</button>
         </form>
 
-        <!-- New button to go directly to Admin Dashboard -->
-        <button class="dashboard-btn" onclick="window.location.href='adminDashboard.jsp'">Go to Dashboard</button>
+        <button class="dashboard-btn" onclick="window.location.href='AdminDashboardServlet'">Go to Dashboard</button>
     </div>
 </body>
 </html>
