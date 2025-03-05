@@ -1,11 +1,11 @@
 package com.StudentManagement.javaservlet;
 
 public class Student {
-    private final int id;
-    private final String name;
-    private final String studentClass;
-    private final int marks;
-    private final String gender;
+    private int id;
+    private String name;
+    private String studentClass;
+    private int marks;
+    private String gender;
 
     public Student(int id, String name, String studentClass, int marks, String gender) {
         this.id = id;
@@ -17,7 +17,7 @@ public class Student {
 
     public int getId() { return id; }
     public String getName() { return name; }
-    public String getStudentClass() { return studentClass; }
+    public String getStudentClass() { return studentClass; } 
     public int getMarks() { return marks; }
     public String getGender() { return gender; }
 }

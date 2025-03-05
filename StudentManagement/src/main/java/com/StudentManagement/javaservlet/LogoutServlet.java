@@ -7,18 +7,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebServlet("/logoutServlet")
 public class LogoutServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get the current session
-        HttpSession session = request.getSession();
-        
-        // Invalidate the session to log the user out
-        session.invalidate();
-        
-        // Redirect the user to the login page
-        response.sendRedirect("login.html");
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        response.sendRedirect("index.html");
     }
 }

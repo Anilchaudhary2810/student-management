@@ -1,6 +1,5 @@
 package com.StudentManagement.javaservlet;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,9 +12,7 @@ public class DBUtil {
 
     public static Connection getConnection() throws SQLException {
         try {
-            // Load MySQL driver class
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            // Establish the connection to the database
+            Class.forName("com.mysql.cj.jdbc.Driver"); // Load driver
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
             throw new SQLException("Database driver not found.");

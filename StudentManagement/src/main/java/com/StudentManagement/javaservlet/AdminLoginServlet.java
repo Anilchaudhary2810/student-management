@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-//@WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
 
     @Override
@@ -16,21 +15,19 @@ public class AdminLoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Example hardcoded admin credentials
-        String adminUsername = "anil";
-        String adminPassword = "anil";
-
-        // Check if the credentials match
-        if (username.equals(adminUsername) && password.equals(adminPassword)) {
+        // Hardcoded admin credentials (multiple users)
+        if ((username.equals("anil") && password.equals("anil")) ||
+            (username.equals("pranam") && password.equals("pranam"))) {
+            
             // Create a session and set an attribute to mark the admin as logged in
             HttpSession session = request.getSession();
             session.setAttribute("admin", "loggedIn");
 
             // Redirect to the admin dashboard
-            response.sendRedirect("adminDashboard.html");
+            response.sendRedirect("adminDashboard.jsp");
         } else {
             // If credentials don't match, redirect back to the login page
-            response.sendRedirect("login.html");
+            response.sendRedirect("index.html");
         }
     }
 }

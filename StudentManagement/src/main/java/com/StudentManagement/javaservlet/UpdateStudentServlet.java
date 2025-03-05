@@ -13,16 +13,30 @@ public class UpdateStudentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int studentId = Integer.parseInt(request.getParameter("student_id"));
-        String name = request.getParameter("name");
-        String studentClass = request.getParameter("class");
-        int marks = Integer.parseInt(request.getParameter("marks"));
-        String gender = request.getParameter("gender");
+        int studentId;
+        int marks;
 
         try {
-            Connection con = DBUtil.getConnection();
-            String query = "UPDATE students SET name = ?, class = ?, marks = ?, gender = ? WHERE student_id = ?";
-            PreparedStatement stmt = con.prepareStatement(query);
+            studentId = Integer.parseInt(request.getParameter("student_id").trim());
+            marks = Integer.parseInt(request.getParameter("marks").trim());
+        } catch (NumberFormatException e) {
+            response.sendRedirect("updateStudent.html?error=invalid_input");
+            return;
+        }
+
+        String name = request.getParameter("name").trim();
+        String studentClass = request.getParameter("class").trim();
+        String gender = request.getParameter("gender").trim();
+
+        if (name.isEmpty() || studentClass.isEmpty() || gender.isEmpty()) {
+            response.sendRedirect("updateStudent.html?error=empty_fields");
+            return;
+        }
+
+        String query = "UPDATE students SET name = ?, class = ?, marks = ?, gender = ? WHERE student_id = ?";
+        try (Connection con = DBUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query)) {
+
             stmt.setString(1, name);
             stmt.setString(2, studentClass);
             stmt.setInt(3, marks);
@@ -31,10 +45,11 @@ public class UpdateStudentServlet extends HttpServlet {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                response.sendRedirect("adminDashboard.html");
+                response.sendRedirect("adminDashboard.jsp");
             } else {
                 response.sendRedirect("updateStudent.html?error=notfound");
             }
+
         } catch (SQLException e) {
             response.sendRedirect("updateStudent.html?error=database");
         }

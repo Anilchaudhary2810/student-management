@@ -21,6 +21,7 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
+            text-align: center;
         }
         h2 {
             text-align: center;
@@ -32,18 +33,27 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        .submit-btn {
+        .submit-btn, .dashboard-btn {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
             border: none;
             color: white;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            margin-top: 10px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
         }
         .submit-btn:hover {
             background-color: #45a049;
+        }
+        .dashboard-btn {
+            background-color: #007BFF;
+        }
+        .dashboard-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -51,27 +61,29 @@
     <div class="form-container">
         <h2>Add Student</h2>
         <form action="AddStudentServlet" method="POST">
-    <input type="text" class="input-field" name="name" placeholder="Name" required>
-    
-    <!-- Dropdown for Class -->
-    <select class="input-field" name="class" required>
-        <option value="Post Graduate">Post Graduate</option>
-        <option value="Undergraduate">Undergraduate</option>
-        <option value="PhD">PhD</option>
-        <option value="School">School</option>
-    </select>
+            <input type="text" class="input-field" name="name" placeholder="Name" required>
+            
+            <!-- Dropdown for Class -->
+            <select class="input-field" name="class" required>
+                <option value="Post Graduate">Post Graduate</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="PhD">PhD</option>
+                <option value="School">School</option>
+            </select>
 
-    <input type="number" class="input-field" name="marks" placeholder="Marks" required>
+            <input type="number" class="input-field" name="marks" placeholder="Marks" required>
 
-    <!-- Radio Buttons for Gender -->
-    <label>Gender:</label><br>
-    <input type="radio" name="gender" value="Male" required> Male
-    <input type="radio" name="gender" value="Female" required> Female
-    <input type="radio" name="gender" value="Other" required> Other
+            <!-- Radio Buttons for Gender -->
+            <label>Gender:</label><br>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female" required> Female
+            <input type="radio" name="gender" value="Other" required> Other
 
-    <button type="submit" class="submit-btn">Add Student</button>
-</form>
+            <button type="submit" class="submit-btn">Add Student</button>
+        </form>
 
+        <!-- New button to go directly to Admin Dashboard -->
+        <button class="dashboard-btn" onclick="window.location.href='adminDashboard.jsp'">Go to Dashboard</button>
     </div>
 </body>
 </html>
