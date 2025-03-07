@@ -64,7 +64,7 @@
                     <td><%= student.getMarks() %></td>
                     <td><%= student.getGender() %></td>
                     <td>
-                        <a href="updateStudent.html?student_id=<%= student.getId() %>" class="button">Update</a>
+                        <a href="UpdateStudentServlet?student_id=<%= student.getId() %>" class="button">Update</a>
                         <form action="DeleteStudentServlet" method="post" style="display: inline;">
                             <input type="hidden" name="student_id" value="<%= student.getId() %>">
                             <button type="submit" class="button">Delete</button>
@@ -84,8 +84,6 @@
         
         <br>
         <button class="button" onclick="window.location.href='addStudent.html'">Add Student</button>
-        <button class="button" onclick="window.location.href='updateStudent.html'">Direct Update Student</button>
-        <button class="button" onclick="window.location.href='deleteStudent.html'">Direct Delete Student</button>
         <br><br>
         <button class="button" onclick="window.location.href='LogoutServlet'">Logout</button>
     </div>
