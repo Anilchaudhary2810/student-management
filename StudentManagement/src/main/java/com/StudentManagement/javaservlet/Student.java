@@ -1,11 +1,11 @@
 package com.StudentManagement.javaservlet;
 
 public class Student {
-    private int id;
-    private String name;
-    private String studentClass;
-    private int marks;
-    private String gender;
+    private final int id;
+    private final String name;
+    private final String studentClass;
+    private final int marks;
+    private final String gender;
 
     public Student(int id, String name, String studentClass, int marks, String gender) {
         this.id = id;

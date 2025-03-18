@@ -18,14 +18,13 @@ public class AdminDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        // Check if admin is logged in
         if (session == null || session.getAttribute("admin") == null) {
             response.sendRedirect("index.html");
             return;
         }
 
         ArrayList<Student> students = new ArrayList<>();
-        int studentCount = 0; // Variable to store student count
+        int studentCount = 0; 
 
         try (Connection conn = DBUtil.getConnection()) {
             String query = "SELECT * FROM students"; 
@@ -43,7 +42,6 @@ public class AdminDashboardServlet extends HttpServlet {
                 }
             }
 
-            // Count total students
             String countQuery = "SELECT COUNT(*) AS total FROM students";
             try (PreparedStatement countStmt = conn.prepareStatement(countQuery);
                  ResultSet countRs = countStmt.executeQuery()) {
@@ -55,14 +53,12 @@ public class AdminDashboardServlet extends HttpServlet {
             request.setAttribute("error", "Database error while fetching students.");
         }
 
-        // Debugging logs to check if data is retrieved
         System.out.println("📌 Total Students Retrieved: " + students.size());
         for (Student s : students) {
             System.out.println("Student: " + s.getId() + " - " + s.getName());
         }
         System.out.println("📌 Total Student Count: " + studentCount);
 
-        // Pass student data and count to JSP
         request.setAttribute("students", students);
         request.setAttribute("studentCount", studentCount);
         RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");

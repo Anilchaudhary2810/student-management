@@ -36,6 +36,7 @@
         <servlet-name>Update</servlet-name>
         <servlet-class>com.StudentManagement.javaservlet.Update</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>AddStudentServlet</servlet-name>
         <url-pattern>/AddStudentServlet</url-pattern>

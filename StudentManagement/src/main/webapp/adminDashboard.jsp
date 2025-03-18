@@ -28,7 +28,6 @@
         <h3>Student Data</h3>
         
         <%
-            // Get student count
             Integer studentCount = (Integer) request.getAttribute("studentCount");
         %>
         <p><strong>Total Students: <%= (studentCount != null) ? studentCount : 0 %></strong></p>
@@ -46,7 +45,6 @@
             </thead>
             <tbody>
                 <%
-                    // Fetch student list from request attribute
                     Object studentsObj = request.getAttribute("students");
                     ArrayList<Student> students = null;
 
@@ -76,7 +74,7 @@
                     } else {
                 %>
                 <tr>
-                    <td colspan="6" style="text-align: center; color: red;">No students found.</td>
+                    <td colspan="6" style="text-align: center; sacolor: red;">No students found.</td>
                 </tr>
                 <% } %>
             </tbody>
@@ -84,6 +82,8 @@
         
         <br>
         <button class="button" onclick="window.location.href='addStudent.html'">Add Student</button>
+        <button class="button" onclick="window.location.href='deleteStudent.html'">Delete Student using ID</button>
+        <button class="button" onclick="window.location.href='updateStudent.html'">Update Student using ID</button>
         <br><br>
         <button class="button" onclick="window.location.href='LogoutServlet'">Logout</button>
     </div>
